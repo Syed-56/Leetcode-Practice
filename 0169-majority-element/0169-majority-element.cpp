@@ -10,8 +10,8 @@ public:
                 if(nums[i]==nums[j]) {
                     freq++;
                 }
-                if(freq > n/2)  return nums[i];
             }
+            if(freq > n/2)  return nums[i];
         }
         return -1;
     }
