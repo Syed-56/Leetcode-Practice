@@ -10,7 +10,7 @@ public:
     }
     int rightSum=totalSum, leftSum=0;
     for(int i=0; i<n; i++) {
-        leftSum += nums[i];
+        rightSum -= nums[i];
         if(rightSum==leftSum) {
             pivotIndex=i;
             found=true;
