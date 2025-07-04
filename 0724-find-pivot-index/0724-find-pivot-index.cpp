@@ -3,9 +3,9 @@ public:
     int pivotIndex(vector<int>& nums) {
         int n = nums.size();
         int sumLeft, sumRight;
-        int pivotIndex = n-1;
+        int pivotIndex = 0;
         bool found=false;
-        while (pivotIndex >= 0) {
+        while (pivotIndex < n) {
             sumLeft=0, sumRight=0;
             for(int j=0; j<pivotIndex; j++) {
                 sumLeft += nums[j];
@@ -21,7 +21,7 @@ public:
                 break;
             }
             else {
-                pivotIndex--;
+                pivotIndex++;
             }
     }
     if(found)   return pivotIndex;
