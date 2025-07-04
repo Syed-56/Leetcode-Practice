@@ -13,9 +13,6 @@ public:
             for(int j=n-1; j>pivotIndex; j--) {
                 sumRight += nums[j];
             }
-            cout << "\nPivot Index = " << pivotIndex << endl;
-            cout << "Sum from Pivot Index Left = " << sumLeft << endl;
-            cout << "Sum from Pivot Index Right = " << sumRight << endl;
             if(sumLeft==sumRight) {
                 found=true;
                 break;
