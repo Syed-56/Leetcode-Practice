@@ -1,20 +1,36 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> pair(2,0);
-        int start = 0, end = nums.size()-1;
+        int n = nums.size();
+        vector<int> pair(2, -1); // default -1 in case no solution found
+        vector<int> tempNums = nums;
+        sort(tempNums.begin(), tempNums.end());
+
+        int start = 0, end = n - 1;
+        int num1 = 0, num2 = 0;
+        bool found = false;
+
         while (start < end) {
-            if((nums[start] + nums[end]) < target) {
-                end--;
-            }
-            else if((nums[start] + nums[end]) > target) {
+            int sum = tempNums[start] + tempNums[end];
+            if (sum < target) {
                 start++;
-            }
-            else {
-                pair[0] = nums[start];
-                pair[1] = nums[end];
+            } else if (sum > target) {
+                end--;
+            } else {
+                num1 = tempNums[start];
+                num2 = tempNums[end];
+                found = true;
+                break;
             }
         }
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == num1 && pair[0] == -1)
+                pair[0] = i;
+            else if (nums[i] == num2 && i != pair[0]) 
+                pair[1] = i;
+        }
+
         return pair;
     }
 };
