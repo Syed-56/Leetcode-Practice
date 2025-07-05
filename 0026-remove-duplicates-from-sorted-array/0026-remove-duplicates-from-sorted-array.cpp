@@ -2,25 +2,17 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
         int n = nums.size();
-        int count=n;
-        for(int i=0; i<n; i++) {
-            for(int j=i+1; j<n; j++) {
-                if(nums[i] != INT_MIN && nums[i]==nums[j]) {
-                    nums[j] = INT_MIN;
-                    count--;
-                }
+        int count=0, pointer=0;
+        for(int i=1; i<=n; i++) {
+            if(nums[i] != nums[pointer]) {
+                nums[count] = nums[pointer];
+                count++;
+                pointer=i;
             }
         }
-        int insertPos = 0;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] != INT_MIN) {
-                nums[insertPos++] = nums[i];
-            }
+        for(int i=count; i<n; i++) {
+            nums[i] = INT_MIN;
         }
-        while (insertPos < n) {
-            nums[insertPos++] = INT_MIN;
-        }
-
         return count;
     }
 };
