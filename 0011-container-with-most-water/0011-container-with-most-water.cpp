@@ -2,13 +2,16 @@ class Solution {
 public:
     int maxArea(vector<int>& height) {
         int n = height.size();
-        int container,maxContainer=0;
-        for(int i=0; i<n; i++) {
+        int left=0, right=n-1;
+        int maxContainer=0, container;
+        while(left<right) {
             container=0;
-            for(int j=i+1; j<n; j++) {
-                container = (abs(j-i)) * (min(height[j],height[i]));
-                maxContainer = max(maxContainer,container);
-            }
+            int h = min(height[left],height[right]);
+            int width = right-left;
+            container = width * h;
+            maxContainer = max(container,maxContainer);
+            if(height[right] < height[left]) right--;
+            else    left++;
         }
         return maxContainer;
     }
