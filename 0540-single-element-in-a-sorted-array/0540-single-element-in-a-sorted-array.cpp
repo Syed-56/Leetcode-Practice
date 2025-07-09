@@ -1,17 +1,28 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
-        int count=0;
         int n = nums.size();
-        for(int i=0; i<n-1; i++) {
-            if(nums[i] != nums[i+1]) {
-                if(count==0)    return nums[i];
-                else    count=0;
+        int start = 0, end = n-1;
+        while(start <= end) {
+            int mid = start + (end-start)/2;
+            if(nums[mid+1] != nums[mid] && nums[mid] != nums[mid-1])    return nums[mid];
+            if(mid%2 == 0) {  //both sides have even elements
+                if(nums[mid] == nums[mid+1]) {      //single element exist in right half
+                    start = mid+1;
+                }
+                else {  //single element exist in left half
+                    end = mid-1;
+                }
             }
-            else {
-                count++;
+            else {  //both sides have odd elements
+                if(nums[mid] == nums[mid+1]) {  //single element exist in left half
+                    end = mid-1;
+                }
+                else {      //single element exist in right half 
+                    start = mid+1;
+                }
             }
         }
-        return nums[n-1];
+        return -1;
     }
 };
