@@ -17,7 +17,6 @@ public:
         bool found=false;
         for(int i=0; i<cols; i++) {
             if(matrix[index][i]==target) {
-                finalIndex = i;
                 found=true;
                 break;
             }
