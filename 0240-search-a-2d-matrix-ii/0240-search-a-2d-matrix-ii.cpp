@@ -4,10 +4,12 @@ public:
         int rows = matrix.size();
         int cols = matrix[0].size();
 
-        for(int i=0; i<rows; i++) {
-            for(int j=0; j<cols; j++) {
-                if(matrix[i][j]==target)    return true;
-            }
+        int start=0, end=cols-1;
+        while(start<rows & end>=0) {
+            int mid = matrix[start][end];
+            if(mid > target)    end--;
+            else if(mid < target)   start++;
+            else    return true;
         }
         return false;
     }
