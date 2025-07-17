@@ -12,13 +12,14 @@ public:
 
         int repeat, missing;
         int n = nums.size();
-        sort(nums.begin(),nums.end());
-        
+        unordered_set<int> s;
+
         for(int i=0; i<n; i++) {
-            if(nums[i]==nums[i+1]) {
+            if(s.find(nums[i]) != s.end()) {
                 repeat = nums[i];
                 break;
             }
+            s.insert(nums[i]);
         }
 
         int actualSum=0, gotSum = -repeat;
