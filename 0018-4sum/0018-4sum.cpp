@@ -15,7 +15,7 @@ public:
                         left++; // Skip duplicates for the third number
                         continue;
                     }
-                    long long sum = nums[i] + nums[j] + nums[left] + nums[right];
+                    long long sum = 1LL * nums[i] + nums[j] + nums[left] + nums[right];
                     if(sum < target) {
                         left++;
                     }
