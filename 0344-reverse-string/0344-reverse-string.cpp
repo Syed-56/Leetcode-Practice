@@ -9,9 +9,5 @@ public:
             left++;
             right--;
         }
-
-        for (char c : s) {
-        cout << c;
-    }
     }
 };
