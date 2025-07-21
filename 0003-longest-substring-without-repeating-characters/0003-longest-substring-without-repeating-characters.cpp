@@ -2,24 +2,20 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int maxLen=0;
-        string substringToPrint = "";
         int open=0, close=0;
         unordered_set<char> seen;
 
         while(close < s.length()) {
             if(seen.count(s[close])) {
+                seen.erase(s[open]);
                 open++;
-                close = open;
-                seen.clear();   
-                substringToPrint = "";
-            }
-            else {
-                substringToPrint += s[close];
+            } else {
                 seen.insert(s[close]);
+                maxLen = max(maxLen, close - open + 1);
                 close++;
-                maxLen = max(maxLen, (int)substringToPrint.length());
             }
         }
+        
         return maxLen;
     }
 };
