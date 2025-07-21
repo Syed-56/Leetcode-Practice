@@ -17,9 +17,9 @@ public:
                 substringToPrint += s[close];
                 seen.insert(s[close]);
                 close++;
+                maxLen = max(maxLen, (int)substringToPrint.length());
             }
         }
-        maxLen = max(maxLen, (int)substringToPrint.length());
         return maxLen;
     }
 };
