@@ -27,8 +27,10 @@ public:
                 while(temp->next != NULL) {
                     temp = temp->next;  
                 }
-                temp->next = nextNode;
-                nextNode->prev = temp;
+                if(nextNode != NULL) {
+                    temp->next = nextNode;
+                    nextNode->prev = temp;
+                }
             } else {
                 curr = curr->next;
             }
